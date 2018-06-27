@@ -1,0 +1,23 @@
+{
+  "name": "tihh.site.router.php",
+  "homepage": "https://github.com/tihhgoncalves/tihh.site.router.php",
+  "authors": [
+    "Tihh Gonçalves <tihh.gon@gmail.com>"
+  ],
+  "description": "Objeto de PHP que controla os parâmetros da URL.",
+  "main": "load.php",
+  "keywords": [
+    "php",
+    "object",
+    "config"
+  ],
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
