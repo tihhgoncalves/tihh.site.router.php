@@ -9,7 +9,7 @@ class tihh_router{
 
   function __construct(){
 
-    global $uri, $config;
+    global $config;
 
     if(!isset($_GET['url']) || empty($_GET['url']))
       $this->gets = 'index';
@@ -19,20 +19,20 @@ class tihh_router{
     $this->levels = explode('/', $this->gets);
     $this->page = array_shift($this->levels);
 
-    $url_base = $uri->Host() . $uri->scriptName();
+    $url_base = $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']);
 
     //verifica versão do site
-    if(strpos($config->get('site_localhost_url'), $url_base) > 0) {
+    if(strpos($config->get('site_url_localhost'), $url_base) > 0) {
       $this->version = 'localhost';
-      $config->set('site_url', $config->get('site_localhost_url'));
+      $config->set('site_url', $config->get('site_url_localhost'));
     }
-    if(strpos($config->get('site_beta_url'), $url_base) > 0) {
+    if(strpos($config->get('site_url_beta'), $url_base) > 0) {
       $this->version = 'beta';
-      $config->set('site_url', $config->get('site_beta_url'));
+      $config->set('site_url', $config->get('site_url_beta'));
     }
-    if(strpos($config->get('site_production_url'), $url_base) > 0) {
+    if(strpos($config->get('site_url_production'), $url_base) > 0) {
       $this->version = 'production';
-      $config->set('site_url', $config->get('site_production_url'));
+      $config->set('site_url', $config->get('site_url_production'));
     }
 
   }
