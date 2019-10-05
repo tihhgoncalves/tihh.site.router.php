@@ -21,18 +21,19 @@ class tihh_router{
 
     $url_base = $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']);
 
+    
     //verifica versão do site
     if(strpos($config->get('site_url_localhost'), $url_base) > 0) {
       $this->version = 'localhost';
       $config->set('site_url', $config->get('site_url_localhost'));
-    }
-    if(strpos($config->get('site_url_beta'), $url_base) > 0) {
+    } elseif(strpos($config->get('site_url_beta'), $url_base) > 0) {
       $this->version = 'beta';
       $config->set('site_url', $config->get('site_url_beta'));
-    }
-    if(strpos($config->get('site_url_production'), $url_base) > 0) {
+    } elseif(strpos($config->get('site_url_production'), $url_base) > 0) {
       $this->version = 'production';
       $config->set('site_url', $config->get('site_url_production'));
+    }else{
+      die('Ocorreu um erro ao tentar identificar a versão do site pela URL.');
     }
 
   }
